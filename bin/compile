@@ -182,13 +182,13 @@ run_npm "install"
 run_npm "rebuild"
 echo "Dependencies installed" | indent
 
-# CUSTOM BUILD STEPS
+# START CUSTOM BUILD STEPS
 echo "-----> Install build tools"
 run_npm "install jake -g"
 
 echo "-----> Precompile static assets into production form"
-ls -al
 jake assets:precompile
+# END CUSTOM BUILD STEPS
 
 # repack cache with new assets
 if [ -d $CACHE_TARGET_DIR ]; then
